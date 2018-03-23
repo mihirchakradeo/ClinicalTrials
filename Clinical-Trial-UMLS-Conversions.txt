@@ -1,0 +1,81 @@
+﻿1. NCT00000620
+Inclusion:
+I. disease(diabetes(type(2)))
+II. fasting_plasma_glucose_level(126, _, mg/dl)
+III. test(oral_glucose_tolerance(200, _, mg/dl))	
+IV. (age(40, 55) AND condition(CVD))
+V. ((age(55, _) AND disease(CVD))
+VI. (age(55, _) AND disease(subclinical))
+VII. HbA1c(7.5,9) AND drug_intake(high)
+VIII. HbA1c(7.5,11) AND drug_intake(low)
+	No Exclusion
+
+2. NCT00004984
+	Inclusion:
+		I. age(3,45) AND ((disease(diabetes(type(1)), relation(child))) OR     (disease(diabetes(type(1)), relation(parent))) OR (disease(diabetes(type(1)), relation(sibling))) )
+		II. age(3,20) AND ((disease(diabetes(type(1)), relation(cousin))) OR     (disease(diabetes(type(1)), relation(niece))) OR (disease(diabetes(type(1)), relation(nephew)))) OR (disease(diabetes(type(1)), relation(aunt)))) OR (disease(diabetes(type(1)), relation(uncle))))
+
+	Exclusion:
+I. NEG(disease(diabetes(type(1)))) OR NEG(disease(diabetes(type(2))))
+II. NEG(treated(insulin)) OR NEG(treated(oral_diabetes_medicine))
+III. NEG(therapy(disease(diabetes(type(1))), nicotinamide)) OR NEG(therapy(disease(diabetes(type(1))), immunosuppressive))
+IV. NEG(disease(serious))
+V. gender(female) AND NEG(pregnant)
+		
+
+3. NCT00005479
+	Inclusion:
+I. disease(diabetes(type(2))) OR treated(medicine(diabetes)) OR fasting_glucose(140, _, mg/dl)
+II. disease(myocardial_infarction) OR treatment(coronary_angiogram(lt(1), year)) OR test(exercise_perfusion)
+III. disease(myocardial_infarction) OR treatment(ptca_stent) OR treatment(CBGA) OR disease(stenosis(75, _))
+IV. NEG(disease(myocardial_infarction)) OR NEG(treatment(ptca_stent)) OR NEG(treatment(CBGA)) OR NEG(disease(stenosis(50, 50))))
+	Exclusion:
+I. NEG(disease(myocardial_infarction))
+II. NEG(treatment(cardiac_procedure))
+III. NEG(diagnosis(disease(cancer))) OR NEG(diagnosis(congestive_heart_failure))	OR NEG(disease(kidney)) OR NEG(disease(liver)) OR NEG(disease(pancreatitis)) OR NEG(disease(gastrointestinal)))
+IV. NEG(condition(creatinine_level(1.3, _))) OR NEG(condition(abnormal(liver_function))) OR NEG(condition(abnormal(CBC)))
+V. NEG(condition(abnormal(thyroid)))
+VI. gender(male) AND NEG(BMI(_, 34))) OR (gender(female) AND NEG(BMI(_, 37))) OR (gender(male) AND gender(female) AND NEG(BMI(_, 20)))
+	
+4. NCT00011141
+Inclusion:
+I. disease(diabetes(type(1)))
+No Exclusion
+
+5. NCT00011531
+Inclusion:
+I. condition(wounds)
+II. condition(ulcers)
+No Exclusion
+
+6. NCT00013741
+Inclusion:
+I. gender(male) AND age(45, _) AND
+( 
+history(condition(CHD)) OR 
+habit(smoker(cigarette)) OR 
+condition(hypertension) OR
+(condition(elevated(cholesterol)) AND (low(hdl) OR high(hdl)) )
+
+)
+II. gender(female) AND age(55, _) AND
+( 
+history(condition(CHD)) OR 
+habit(smoker(cigarette)) OR 
+(condition(elevated(cholesterol)) AND (low(hdl) OR high(hdl))
+)
+III. condition(active(angina))
+IV. history(CHD)
+V. history(MI)
+VI. disease(diabetes(type(2)))
+VII. condition(renal(dialysis))
+
+Exclusion:
+I. hospitalization(lt(4), weeks)
+II. TODO: Persons living in a home with previously enrolled patients
+III. TODO: Patients disoriented to person, place, or time at onset of study
+
+7. 
+
+
+
