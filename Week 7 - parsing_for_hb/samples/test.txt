@@ -6,7 +6,8 @@ Inclusion Criteria:
           -  Individuals 3-20 years old who have an extended family member with type 1 diabetes
              (such as a cousin, niece, nephew, aunt, uncle, grandparent, or half-sibling)
 
-          -  HbA1C 12% at most, should not exceed that for males or HgA1C 14%
+          -  HbA1C 12% at most, should not exceed that for males
+          -  HgA1C 14% or less
         Exclusion Criteria:
 
           -  To be eligible, a person must:
