@@ -42,19 +42,74 @@ def create_i2b2(percentage, line_number, flag):
 	line_number = str(line_number)+":0 "+str(line_number)+":0"
 	final_string = ""
 	if flag == "b":
-		final_string += "c=\"hba1c\" "+str(line_number)+"||t=\"test\""
+		final_string += "\nc=\"hba1c "+str(percentage)+"\" "+str(line_number)+"||t=\"test\""
 	elif flag == "g":
-		final_string += "c=\"hga1c\" "+str(line_number)+"||t=\"test\""
+		final_string += "c=\"hga1c "+str(percentage)+"\" "+str(line_number)+"||t=\"test\""
 	return final_string
 
 
-def replace_num(file):
+def replace_num_helper(location, fname, replace_line):
+	'''
+	This is a helper function for replace_num method, which actually replaces
+	the __num__ with value
+
+	'''
+
+	line_number = ""
+	word_start = ""
+	word_end = ""
+	temp = location.split(" ")
+	
+	t = []
+	for i in temp:
+		t.append(i.split(":"))
+
+	line_number = int(t[0][0])
+	word_start = int(t[0][1])
+	word_end = int(t[1][1])
+
+	print line_number, word_start, word_end
+
+	with open(fname) as f:
+		content = f.readlines()
+
+	number = int(re.findall(r'[0-9]', content[line_number-1])[0])
+	replace_line = replace_line.replace("__num__", str(number))
+	return replace_line
+
+
+def replace_num(file, fname):
 	
 	'''
 	This function takes in the file and checks for __num__ missing values, and then replaces
 	with the correct number
 	'''
+	line = []
+	loc = []
 
+	with open(file) as f:
+		content = f.readlines()
+	# print content
+	for i in content:
+		if "__num__" in i:
+			line.append(i)
+
+
+	for i in line:
+		loc+=(re.findall(r'[0-9]*:[0-9]*\ [0-9]*:[0-9]*', i))
+	print loc
+
+	res = []
+
+	for i in range(len(loc)):
+	# for location in loc:
+		res.append(replace_num_helper(loc[i], fname, line[i]))
+
+	# TODO: instead of just appending res to the file, replace it in the file
+	with open(file, "a") as f:
+		for i in res:
+			f.write("\n"+i)
+	return
 
 
 
@@ -68,6 +123,11 @@ def main():
 	fname2 = sys.argv[2]
 	print fname2
 
+	# First replacing the __num__ from i2b2 with actual values
+	replace_num(fname2, fname)
+
+
+	
 	# Searching for hba1c and hga1c in the file
 	# line_number_b holds the location where the hba1c statement is found
 	hba1c, line_number_b = get_values(fname, "hba1c")
@@ -97,6 +157,7 @@ def main():
 		print i2b2_g
 		with open(fname2, "a") as f:
 			f.write("\n"+i2b2_g)
+	
 
 if __name__ == '__main__':
 	main()
